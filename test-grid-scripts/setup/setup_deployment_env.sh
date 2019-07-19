@@ -29,18 +29,11 @@ setup_deployment_env() {
 
     work_dir=$(pwd)
     declare -g -A infra_config
-    echo "=== ******************************properties ==="
-    INPUTS_DIR=$2
-    echo "My is $INPUTS_DIR"
     echo "======Starting++++++++++++++++++++++++++++++++++++"
     pwd
     ls
-    echo "======cd to INPUT+++++++++++++++++++++++++++++"
-    cd "${input_dir}"
-    ls
-    echo "======CAT INPUT+++++++++++++++++++++++++++++"
+    echo "====== infra location : ${input_dir}"
     cat infrastructure.properties
-
     read_property_file "${input_dir}/infrastructure.properties" infra_config
     
 
