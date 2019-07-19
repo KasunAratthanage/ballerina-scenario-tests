@@ -32,7 +32,10 @@ setup_deployment_env() {
     echo "======Starting++++++++++++++++++++++++++++++++++++"
     pwd
     ls
+    echo "======cd to INPUT+++++++++++++++++++++++++++++"
     cd "${input_dir}"
+    ls
+    echo "======CAT INPUT+++++++++++++++++++++++++++++"
     cat infrastructure.properties
 
     read_property_file "${input_dir}/infrastructure.properties" infra_config
