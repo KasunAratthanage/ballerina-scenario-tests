@@ -33,11 +33,10 @@ setup_deployment_env() {
     pwd
     ls
     echo "====== infra location :"
-    cd /testgrid/testgrid-home/jobs/kasunA-ballerina-integrator-k8s/kasunA-ballerina-integrator-k8s_deployment_CentOS-7.5_MySQL-5.7_run20/data-bucket
-    ls
-
+    # cd /testgrid/testgrid-home/jobs/kasunA-ballerina-integrator-k8s/kasunA-ballerina-integrator-k8s_deployment_CentOS-7.5_MySQL-5.7_run20/data-bucket
+    # ls
     cat infrastructure.properties
-    read_property_file "/testgrid/testgrid-home/jobs/kasunA-ballerina-integrator-k8s/kasunA-ballerina-integrator-k8s_deployment_CentOS-7.5_MySQL-5.7_run20/data-bucket/infrastructure.properties" infra_config
+    read_property_file "${input_dir}/infrastructure.properties" infra_config
     
 
     readonly docker_user=${infra_config["dockerhub_ballerina_scenarios_username"]}
