@@ -29,13 +29,7 @@ setup_deployment_env() {
 
     work_dir=$(pwd)
     declare -g -A infra_config
-    echo "======Starting++++++++++++++++++++++++++++++++++++"
-    pwd
-    ls
-    echo "====== infra location :"
-    # cd /testgrid/testgrid-home/jobs/kasunA-ballerina-integrator-k8s/kasunA-ballerina-integrator-k8s_deployment_CentOS-7.5_MySQL-5.7_run20/data-bucket
-    # ls
-    cat infrastructure.properties
+    cat ${input_dir}/infrastructure.properties
     read_property_file "${input_dir}/infrastructure.properties" infra_config
     
 
@@ -69,9 +63,9 @@ setup_deployment_env() {
         echo "Ballerina download location: ${corrected_url}"
         install_ballerina_from_link ${corrected_url}
     else
-        local ballerina_version_in_yaml="${infra_config["BallerinaVersion"]}"
+        local ballerina_version_in_yaml="${infra_config["BallerinaVersion"]:-""}"
         if [ "${ballerina_version_in_yaml}" = "" ]; then
-            echo "No information provided regarding the Ballerina version to use!"
+            echo "No information provided regarding the Ballerina version to use! Please add BallerinaVersion into deploymentConfig inputParameters."
             exit 2
         fi
         install_ballerina ${ballerina_version_in_yaml}
